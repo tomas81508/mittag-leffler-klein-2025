@@ -1,0 +1,4 @@
+^{:watch-dirs          ["src"]
+  :ring-server-options {:port 9001}}
+{:main      se.conjoin-it.klein-2025.main
+ :output-to "resources/public/js/main.js"}

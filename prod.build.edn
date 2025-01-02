@@ -1,0 +1,2 @@
+{:optimizations :advanced
+ :main se.conjoin-it.klein-2025.main}
