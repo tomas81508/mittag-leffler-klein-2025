@@ -202,8 +202,7 @@
                                                            :data value}))}]
 
               [style/button {:text    "Animera"
-                             :style    {:margin-top "10px"
-                                        :width "100%"}
+                             :style    {:margin-top "10px"}
                              :on-click (fn [] (toggle-animation!))}]]]
 
             [:div {:style {:margin-bottom "2rem"
@@ -222,7 +221,6 @@
                              :margin       (str "0 " animation-margin "px")
                              :border-right "3px solid lightgray"
                              :border-left  "3px solid lightgray"}}
-               (println (:animation-element db-timing-functions))
                (condp = (:animation-element db-timing-functions)
                  :background-color
                  [:div {:style {:margin-bottom    "1rem"
@@ -278,7 +276,5 @@
   [db-timing-functions width]
   (when db-timing-functions
     [:div {:id "timing-functions"}
-     [timing-functions-component db-timing-functions width]
-
-     ]))
+     [timing-functions-component db-timing-functions width]]))
 

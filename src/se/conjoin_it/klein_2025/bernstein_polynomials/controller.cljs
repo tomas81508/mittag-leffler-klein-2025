@@ -13,9 +13,7 @@
     {:degree degree
      :values (compute-plot-values degree)}))
 
-(defmethod start-page-processes! section-name
-  [_]
-  )
+(defmethod start-page-processes! section-name [_])
 
 (defmethod stop-page-processes! section-name [_])
 

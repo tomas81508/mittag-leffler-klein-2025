@@ -16,9 +16,7 @@
    :animation-element        :transform
    :predefined               :ease})
 
-(defmethod start-page-processes! section-name
-  [_]
-  )
+(defmethod start-page-processes! section-name [_])
 
 (defmethod stop-page-processes! section-name [_])
 
@@ -37,9 +35,8 @@
     (swap! db/db-atom update section-name
            (fn [db-timing-functions]
              (let [timing-function (predefined-timing-functions data)]
-               (println timing-function)
                (assoc db-timing-functions
-                 :predefined (:value data)
+                 :predefined data
                  :graph-point1 (:p1 timing-function)
                  :graph-point2 (:p2 timing-function)))))
 

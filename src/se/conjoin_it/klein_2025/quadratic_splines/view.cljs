@@ -91,7 +91,7 @@
 
          [:g {:style {:opacity    (if (:show-curve db-quadratic-splines) 1 0)
                       :transition "all 1000ms"}}
-          [:path {:stroke       style/kth-blue
+          [:path {:stroke       "green"
                   :stroke-width "2px"
                   :fill         "transparent"
                   :d            (let [[[x1 y1] [x2 y2] [x3 y3]] control-points]

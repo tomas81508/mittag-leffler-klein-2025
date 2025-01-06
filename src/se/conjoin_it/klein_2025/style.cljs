@@ -52,7 +52,8 @@
                               :border-radius    "5px"
                               :color            kth-white
                               :cursor           "pointer"
-                              :background-color kth-blue}
+                              :background-color kth-blue
+                              :width            "180px"}
                              style)
             :on-click on-click}
    text])
@@ -66,12 +67,15 @@
     label     :label
     on-change :on-change
     on-blur   :on-blur}]
-  [:div {:style {:margin-bottom "10px"}}
+  [:div {:style {:margin-bottom    "10px"
+                 :background-color "rgb(240,240,240)"
+                 :padding          "5px 10px 10px"
+                 :width            "160px"
+                 :border-radius    "5px"}}
    [:label {:style {:font-size "80%"}}
     label]
    [:input {:value     value
-            :style     {:padding "5px"
-                        :width "160px"}
+            :style     {:padding "5px"}
             :on-change (fn [e] (on-change (e->value e)))
             :on-blur   (fn [e] (on-blur (e->value e)))}]])
 
@@ -81,16 +85,34 @@
     value     :value
     on-change :on-change
     options   :options}]
-  [:div {:style {:margin-bottom "10px"}}
+  [:div {:style {:margin-bottom "10px"
+                 :background-color "rgb(240,240,240)"
+                 :padding          "5px 10px 10px"
+                 :width            "160px"
+                 :border-radius    "5px"}}
    [:label {:style {:font-size "80%"}}
     label]
    [:select {:value     (or value "NA")
              :style     {:padding "5px"
-                         :width "174px"}
+                         :width   "150px"}
              :on-change (fn [e] (on-change (keyword (e->value e))))}
-    (->> (if value options (cons [:option {:key -1 :value "NA"}] options))
+    (->> (if value options (cons {:label "NA" :value "NA"} options))
          (map-indexed (fn [index {option-label :label
                                   option-value :value}]
                         [:option {:key   index
                                   :value option-value}
                          option-label])))]])
+
+(defn display
+  [{label :label
+    value :value}]
+  [:div {:style {:margin-bottom    "10px"
+                 :background-color "rgb(240,240,240)"
+                 :padding          "5px 10px"
+                 :width            "160px"
+                 :border-radius    "5px"}}
+   [:label {:style {:font-size "80%"}}
+    label]
+   [:div value]])
+
+

@@ -8,7 +8,11 @@
             [se.conjoin-it.klein-2025.bernstein-polynomials.view :as bernstein-polynomials-view]
             [se.conjoin-it.klein-2025.super-mario.view :as super-mario-view]
             [se.conjoin-it.klein-2025.tangram.view :as tangram-view]
-            [se.conjoin-it.klein-2025.timing-functions.view :as timing-functions-view]))
+            [se.conjoin-it.klein-2025.timing-functions.view :as timing-functions-view]
+            [se.conjoin-it.klein-2025.svg_api.view :as svg-api-view]
+            [se.conjoin-it.klein-2025.css_api.view :as css-api-view]
+            [se.conjoin-it.klein-2025.harmonic-oscillator.view :as harmonic-oscillator-view]
+            [se.conjoin-it.klein-2025.monte_carlo_volume.view :as monte-carlo-volume-view]))
 
 (defn header-component
   [db]
@@ -63,10 +67,12 @@
                     :border-radius    "5px"
                     :color            ({1 "rgb(60,60,60)"
                                         2 "rgb(60,60,60)"
-                                        3 "rgb(250, 250, 250)"} n)
+                                        3 "rgb(250, 250, 250)"
+                                        4 "rgb(250, 250, 250)"} n)
                     :background-color ({1 "orange"
                                         2 "darkorange"
-                                        3 "darkred"} n)}
+                                        3 "rgb(180,60,30)"
+                                        4 "darkred"} n)}
          :on-click (fn [] (handle-main-events {:name :page-changed :data name}))}
    display-name])
 
@@ -98,6 +104,10 @@
    [section db 3 "Tangram" :tangram]
 
    [section db 3 "Super Mario - fritt fall" :super-mario]
+
+   [:br]
+
+   [section db 4 "Volym och dimension" :monte-carlo-volume]
 
    ])
 
@@ -131,6 +141,18 @@
 
       :timing-functions
       [timing-functions-view/main-component (:timing-functions db) (:screen-width db)]
+
+      :svg-api
+      [svg-api-view/main-component (:svg-api db) (:screen-width db)]
+
+      :css-api
+      [css-api-view/main-component (:css-api db) (:screen-width db)]
+
+      :harmonic-oscillator
+      [harmonic-oscillator-view/main-component (:harmonic-oscillator db) (:screen-width db)]
+
+      :monte-carlo-volume
+      [monte-carlo-volume-view/main-component (:monte-carlo-volume db)]
 
       (println "No match for" (:page db))
 

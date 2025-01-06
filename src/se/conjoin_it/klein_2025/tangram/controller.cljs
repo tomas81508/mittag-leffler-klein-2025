@@ -21,9 +21,7 @@
      :time            0})
   )
 
-(defmethod start-page-processes! section-name
-  [_]
-  )
+(defmethod start-page-processes! section-name [_])
 
 (defmethod stop-page-processes! section-name [_])
 

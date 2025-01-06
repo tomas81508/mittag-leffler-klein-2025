@@ -8,7 +8,10 @@
             [se.conjoin-it.klein-2025.cubic-splines.controller]
             [se.conjoin-it.klein-2025.bernstein-polynomials.controller]
             [se.conjoin-it.klein-2025.tangram.controller]
-            [se.conjoin-it.klein-2025.timing-functions.controller]))
+            [se.conjoin-it.klein-2025.timing-functions.controller]
+            [se.conjoin-it.klein-2025.svg_api.controller]
+            [se.conjoin-it.klein-2025.css_api.controller]
+            [se.conjoin-it.klein-2025.harmonic-oscillator.controller]))
 
 (enable-console-print!)
 

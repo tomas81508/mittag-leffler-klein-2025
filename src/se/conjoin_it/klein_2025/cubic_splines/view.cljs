@@ -154,29 +154,32 @@
                           :justify-content "space-between"}}
             [:div {:style {:display     "flex"
                            :align-items "center"}}
-             [style/button {:style    {}
+             [style/button {:style    {:width "160px"}
                             :on-click (fn [] (handle-event {:name :dec-level}))
                             :text     "Färre detaljer"}]
              [:div {:style {:padding   "5px"
                             :margin    "0px 5px"
                             :font-size "200%"}}
               (:level db-cubic-splines)]
-             [style/button {:style    {}
+             [style/button {:style    {:width "160px"}
                             :on-click (fn [] (handle-event {:name :inc-level}))
                             :text     "Mer detaljer"}]
 
-             [style/button {:style    {:margin-left "30px"}
+             [style/button {:style    {:margin-left "30px"
+                                       :width       "160px"}
                             :on-click (fn [] (handle-event {:name :remove-curve}))
                             :text     "Ta bort kurva"}]
-             [style/button {:style    {:margin-left "10px"}
+             [style/button {:style    {:margin-left "10px"
+                                       :width       "160px"}
                             :on-click (fn [] (handle-event {:name :add-curve}))
                             :text     "Lägg till kurva"}]]
 
             [:div
-             [style/button {:style    {}
+             [style/button {:style    {:width "160px"}
                             :on-click (fn [] (handle-event {:name :toggle-path}))
                             :text     "Visa <path d=\"...\">"}]
-             [style/button {:style    {:margin-left "10px"}
+             [style/button {:style    {:margin-left "10px"
+                                       :width       "160px"}
                             :on-click (fn [] (handle-event {:name :toggle-curve}))
                             :text     "Visa kurvan"}]]]])))))
 
