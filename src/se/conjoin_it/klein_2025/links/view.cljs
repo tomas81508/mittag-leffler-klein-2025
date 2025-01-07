@@ -5,8 +5,8 @@
 
 (defn link-component
   [link title authors]
-  [:div {:style {:padding       "10px"
-                 :margin-bottom "10px"
+  [:div {:style {:padding          "10px"
+                 :margin-bottom    "10px"
                  :background-color "rgb(240,240,240)"}}
    [:a {:href link}
     title]
@@ -68,6 +68,10 @@
         "https://adventofcode.com/2024"
         "Advent of code"
         "Eric Wastl"]
+       [link-component
+        "https://github.com/tomas81508/mittag-leffler-klein-2025"
+        "Koden för denna applikation"
+        "Tomas Ekholm"]
        ]
       ]]))
 
