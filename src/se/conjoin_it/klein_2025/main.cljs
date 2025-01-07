@@ -11,7 +11,8 @@
             [se.conjoin-it.klein-2025.timing-functions.controller]
             [se.conjoin-it.klein-2025.svg_api.controller]
             [se.conjoin-it.klein-2025.css_api.controller]
-            [se.conjoin-it.klein-2025.harmonic-oscillator.controller]))
+            [se.conjoin-it.klein-2025.harmonic-oscillator.controller]
+            [se.conjoin-it.klein-2025.links.controller]))
 
 (enable-console-print!)
 

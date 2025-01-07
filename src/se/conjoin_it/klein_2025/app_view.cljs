@@ -12,13 +12,14 @@
             [se.conjoin-it.klein-2025.svg_api.view :as svg-api-view]
             [se.conjoin-it.klein-2025.css_api.view :as css-api-view]
             [se.conjoin-it.klein-2025.harmonic-oscillator.view :as harmonic-oscillator-view]
-            [se.conjoin-it.klein-2025.monte_carlo_volume.view :as monte-carlo-volume-view]))
+            [se.conjoin-it.klein-2025.monte_carlo_volume.view :as monte-carlo-volume-view]
+            [se.conjoin-it.klein-2025.links.view :as links-view]))
 
 (defn header-component
   [db]
   (let [at-home-page (= (:page db) :home)]
     [:div (merge {:style (merge {:padding          "10px"
-                                 :border-radius "5px"
+                                 :border-radius    "5px"
                                  :display          "flex"
                                  :align-items      "center"
                                  :justify-content  "space-between"
@@ -68,11 +69,13 @@
                     :color            ({1 "rgb(60,60,60)"
                                         2 "rgb(60,60,60)"
                                         3 "rgb(250, 250, 250)"
-                                        4 "rgb(250, 250, 250)"} n)
+                                        4 "rgb(250, 250, 250)"
+                                        5 "rgb(250, 250, 250)"} n)
                     :background-color ({1 "orange"
                                         2 "darkorange"
                                         3 "rgb(180,60,30)"
-                                        4 "darkred"} n)}
+                                        4 "darkred"
+                                        5 "rgb(100,100,100)"} n)}
          :on-click (fn [] (handle-main-events {:name :page-changed :data name}))}
    display-name])
 
@@ -109,6 +112,9 @@
 
    [section db 4 "Volym och dimension" :monte-carlo-volume]
 
+   [:br]
+
+   [section db 5 "Länkar" :links]
    ])
 
 (defn app-component
@@ -153,6 +159,9 @@
 
       :monte-carlo-volume
       [monte-carlo-volume-view/main-component (:monte-carlo-volume db)]
+
+      :links
+      [links-view/main-component (:links db)]
 
       (println "No match for" (:page db))
 
