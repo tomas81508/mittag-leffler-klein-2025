@@ -2,6 +2,7 @@
   (:require [reagent.core]
             [reagent.dom :as reagent-dom]
             [se.conjoin-it.klein-2025.db :as db]
+            [se.conjoin-it.klein-2025.events :refer [handle-main-events]]
             [se.conjoin-it.klein-2025.app-view :refer [app-component]]
             [se.conjoin-it.klein-2025.quadratic-splines.controller]
             [se.conjoin-it.klein-2025.n-splines.controller]
@@ -29,9 +30,15 @@
                              (fn [_ _ old-db new-db]
                                (when-not (= old-db new-db)
                                  (render!))))
-                  (reset! db/db-atom (db/create-initial-state
-                                       {:screen-height (.-innerHeight js/window)
-                                        :screen-width (.-innerWidth js/window)}))
+                  (reset! db/db-atom (db/create-initial-state {:screen-height (.-innerHeight js/window)
+                                                               :screen-width  (.-innerWidth js/window)}))
+                  (let [page (-> js/window
+                                 (.-location)
+                                 (.-search)
+                                 (subs 6))]
+                    (when (not= page "")
+                      (handle-main-events {:name :page-changed
+                                           :data (keyword page)})))
                   (.addEventListener js/window
                                      "resize"
                                      (fn [] (swap! db/db-atom assoc

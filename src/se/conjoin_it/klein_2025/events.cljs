@@ -11,13 +11,14 @@
 (defmethod stop-page-processes! :default [_] (println "No stop-process defined"))
 
 (defn handle-main-events
-  [{name :name
+  [{n :name
     data :data}]
-  (println "MAIN Event:" name ", data:" data)
-  (condp = name
+  (println "MAIN Event:" n ", data:" data)
+  (condp = n
     :page-changed
     (let [previous-page (get (deref db/db-atom) :page)
           next-page data]
+      (println (name data))
       (stop-page-processes! previous-page)
       (swap! db/db-atom
              (fn [db]
@@ -28,4 +29,5 @@
                        (if initial-state
                          (assoc $ next-page initial-state)
                          $)))))
+      (println "URL = " (str js/location.origin "?page=" (name data)))
       (start-page-processes! next-page))))
