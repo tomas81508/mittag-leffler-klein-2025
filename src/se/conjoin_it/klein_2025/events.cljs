@@ -29,5 +29,5 @@
                        (if initial-state
                          (assoc $ next-page initial-state)
                          $)))))
-      (println "URL = " (str js/location.origin "?page=" (name data)))
+      (println "URL = " (str js/location.origin js/location.pathname "?page=" (name data)))
       (start-page-processes! next-page))))
